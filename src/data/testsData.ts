@@ -28,7 +28,7 @@ export const testsMetadata: Record<TestId, TestMetadata> = {
     shortTitle: 'Metodología ClickUp',
     badge: 'Cultura Operativa & Gestión',
     tagline: 'Inbox diario, Modo Yo, regla del 50%, "Empuja la tarea" y entregables',
-    description: 'Evalúa tu asimilación de la metodología operativa diaria de la agencia: gestión de tareas, Backlog intocable, duración estimada con colchón, actualización proactiva y nomenclatura de entregables.',
+    description: 'Evalúa tu manejo del inbox diario, el Modo Yo, la regla del 50%, el estado de las tarjetas y los estándares de entrega.',
     colorGradient: 'linear-gradient(160deg, #ff851d 20%, #f34551 60%, #ef375c 100%)',
     accentColor: '#f34551',
     estimatedTime: '~5 min',
@@ -65,8 +65,8 @@ export const testsMetadata: Record<TestId, TestMetadata> = {
     badge: 'Cultura & Equipo',
     tagline: 'Comunicación efectiva, Scrum-Ban, compromiso y comportamiento en equipo',
     description: 'Evalúa tu comprensión de las reglas del juego: cómo comunicarte, gestionar tus tarjetas, entregar con calidad y desenvolverte con proactividad dentro del equipo.',
-    colorGradient: 'linear-gradient(135deg, #6366f1 0%, #ef375c 100%)',
-    accentColor: '#6366f1',
+    colorGradient: 'linear-gradient(135deg, #ef375c 0%, #ff851d 100%)',
+    accentColor: '#ef375c',
     estimatedTime: '~5 min',
     questionsCount: 10
   }

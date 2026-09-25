@@ -562,7 +562,7 @@ export default function App() {
             </div>
 
             {/* Grid con las 4 Tarjetas estilo AvanzaSmart */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
               
               {/* Tarjeta 1: ClickUp */}
               <div className="group rounded-[var(--radius-lg)] bg-[var(--bg-card)] border border-[var(--border)] shadow-[var(--shadow-card)] overflow-hidden flex flex-col justify-between hover:shadow-[var(--shadow-lg)] hover:-translate-y-1 transition-all duration-200">
@@ -685,7 +685,7 @@ export default function App() {
                 <div>
                   <div
                     className="h-24 relative flex items-center justify-between px-5"
-                    style={{ background: 'linear-gradient(135deg, #6366f1 0%, #ef375c 100%)' }}
+                    style={{ background: 'linear-gradient(135deg, #ef375c 0%, #ff851d 100%)' }}
                   >
                     <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white shadow-sm">
                       <Layers className="w-6 h-6" />
@@ -699,7 +699,7 @@ export default function App() {
                     <h3 className="font-['Ubuntu'] font-bold text-lg text-[var(--gray)] dark:text-[var(--text)] mb-1 group-hover:text-[var(--red)] transition-colors">
                       {testsMetadata.work_methodology.title}
                     </h3>
-                    <p className="text-xs font-semibold mb-2.5" style={{ color: '#6366f1' }}>
+                    <p className="text-xs font-semibold text-[var(--orange)] mb-2.5">
                       {testsMetadata.work_methodology.tagline}
                     </p>
                     <p className="text-xs text-[var(--text-secondary)] leading-relaxed mb-4">

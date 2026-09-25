@@ -561,8 +561,8 @@ export default function App() {
               </p>
             </div>
 
-            {/* Grid con las 3 Tarjetas estilo AvanzaSmart */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            {/* Grid con las 4 Tarjetas estilo AvanzaSmart */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
               
               {/* Tarjeta 1: ClickUp */}
               <div className="group rounded-[var(--radius-lg)] bg-[var(--bg-card)] border border-[var(--border)] shadow-[var(--shadow-card)] overflow-hidden flex flex-col justify-between hover:shadow-[var(--shadow-lg)] hover:-translate-y-1 transition-all duration-200">
@@ -675,6 +675,63 @@ export default function App() {
                     className="w-full py-3 px-4 avanza-btn-primary flex items-center justify-center gap-2 text-xs uppercase tracking-wider cursor-pointer"
                   >
                     <span>{getLastAttempt('core_values') ? 'Repetir Test' : 'Comenzar Test'}</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Tarjeta 4: Metodología de Trabajo */}
+              <div className="group rounded-[var(--radius-lg)] bg-[var(--bg-card)] border border-[var(--border)] shadow-[var(--shadow-card)] overflow-hidden flex flex-col justify-between hover:shadow-[var(--shadow-lg)] hover:-translate-y-1 transition-all duration-200">
+                <div>
+                  <div
+                    className="h-24 relative flex items-center justify-between px-5"
+                    style={{ background: 'linear-gradient(135deg, #6366f1 0%, #ef375c 100%)' }}
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white shadow-sm">
+                      <Layers className="w-6 h-6" />
+                    </div>
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/90 text-[var(--red)] shadow-sm">
+                      {testsMetadata.work_methodology.badge}
+                    </span>
+                  </div>
+
+                  <div className="p-5">
+                    <h3 className="font-['Ubuntu'] font-bold text-lg text-[var(--gray)] dark:text-[var(--text)] mb-1 group-hover:text-[var(--red)] transition-colors">
+                      {testsMetadata.work_methodology.title}
+                    </h3>
+                    <p className="text-xs font-semibold mb-2.5" style={{ color: '#6366f1' }}>
+                      {testsMetadata.work_methodology.tagline}
+                    </p>
+                    <p className="text-xs text-[var(--text-secondary)] leading-relaxed mb-4">
+                      {testsMetadata.work_methodology.description}
+                    </p>
+
+                    {getLastAttempt('work_methodology') ? (
+                      <div className="p-2.5 rounded-lg bg-[var(--bg-subtle)] border border-[var(--border)] mb-3 flex items-center justify-between text-xs">
+                        <span className="text-[var(--text-muted)]">Último resultado:</span>
+                        <span className="font-bold text-[var(--red)]">
+                          {getLastAttempt('work_methodology')?.correctCount}/{getLastAttempt('work_methodology')?.total} Correctas ({getLastAttempt('work_methodology')?.percentage}%)
+                        </span>
+                      </div>
+                    ) : (
+                      <div className="flex flex-wrap gap-2 text-[11px] font-medium text-[var(--text-muted)] mb-3">
+                        <span className="flex items-center gap-1 bg-[var(--bg-subtle)] px-2.5 py-1 rounded-full border border-[var(--border)]">
+                          <Clock className="w-3 h-3" style={{ color: '#6366f1' }} /> {testsMetadata.work_methodology.estimatedTime}
+                        </span>
+                        <span className="flex items-center gap-1 bg-[var(--bg-subtle)] px-2.5 py-1 rounded-full border border-[var(--border)]">
+                          <Layers className="w-3 h-3 text-[var(--red)]" /> 10 preguntas
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                <div className="p-5 pt-0">
+                  <button
+                    onClick={() => startTest('work_methodology')}
+                    className="w-full py-3 px-4 avanza-btn-primary flex items-center justify-center gap-2 text-xs uppercase tracking-wider cursor-pointer"
+                  >
+                    <span>{getLastAttempt('work_methodology') ? 'Repetir Test' : 'Comenzar Test'}</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>

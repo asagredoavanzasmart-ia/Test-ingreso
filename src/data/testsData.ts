@@ -1,4 +1,4 @@
-export type TestId = 'clickup' | 'core_values' | 'sales';
+export type TestId = 'clickup' | 'core_values' | 'sales' | 'work_methodology';
 
 export interface Question {
   question: string;
@@ -55,6 +55,18 @@ export const testsMetadata: Record<TestId, TestMetadata> = {
     description: 'Evalúa tus habilidades comerciales, el uso estratégico de guiones, seguimiento no invasivo, cierres por alternativa y manejo de objeciones por chat.',
     colorGradient: 'linear-gradient(135deg, #ff851d 0%, #ef375c 100%)',
     accentColor: '#ff851d',
+    estimatedTime: '~5 min',
+    questionsCount: 10
+  },
+  work_methodology: {
+    id: 'work_methodology',
+    title: 'Test Diagnóstico Metodología de Trabajo',
+    shortTitle: 'Forma de Trabajo',
+    badge: 'Cultura & Equipo',
+    tagline: 'Comunicación efectiva, Scrum-Ban, compromiso y comportamiento en equipo',
+    description: 'Evalúa tu comprensión de las reglas del juego: cómo comunicarte, gestionar tus tarjetas, entregar con calidad y desenvolverte con proactividad dentro del equipo.',
+    colorGradient: 'linear-gradient(135deg, #6366f1 0%, #ef375c 100%)',
+    accentColor: '#6366f1',
     estimatedTime: '~5 min',
     questionsCount: 10
   }
@@ -438,6 +450,132 @@ export const questionsSales: Question[] = [
   }
 ];
 
+// ==========================================
+// TEST 4: METODOLOGÍA DE TRABAJO (Basado en Proceso de inducción 2)
+// ==========================================
+export const questionsWorkMethodology: Question[] = [
+  {
+    question: "Según la regla de 'Saludo + Mensaje', ¿cuál es la forma correcta de iniciar una conversación por WhatsApp con un compañero?",
+    options: [
+      "Enviar el saludo y el mensaje completo en un solo texto para no hacer esperar al receptor.",
+      "Primero enviar 'Hola', esperar respuesta, luego preguntar '¿Cómo estás?', esperar, y recién después enviar el pedido.",
+      "Enviar solo el mensaje sin saludo para ser más eficiente y no perder tiempo.",
+      "Llamar siempre por teléfono en lugar de escribir para evitar malentendidos."
+    ],
+    answer: 0,
+    category: "Comunicación Efectiva",
+    recommendation: "La regla es clara: saludo y mensaje van juntos en un solo texto. La comunicación fragmentada ('Hola' → esperar → '¿Cómo estás?' → esperar → pedido) hace perder tiempo a todos. Un solo mensaje completo es más respetuoso y eficiente."
+  },
+  {
+    question: "Según el modelo de 'Fuentes de Error', ¿cuántas posibilidades de no entenderse existen en una comunicación?",
+    options: [
+      "9 posibilidades, entre lo que pienso, quiero decir, creo decir, digo, quieres oír, oyes, crees entender, quieres entender y entiendes.",
+      "3 posibilidades: emisor, mensaje y receptor.",
+      "2 posibilidades: lo que se dice y lo que se entiende.",
+      "6 posibilidades, una por cada canal de comunicación disponible en la agencia."
+    ],
+    answer: 0,
+    category: "Comunicación Efectiva",
+    recommendation: "Existen 9 posibilidades de no entenderse: entre lo que pienso, lo que quiero decir, lo que creo decir, lo que digo, lo que quieres oír, lo que oyes, lo que crees entender, lo que quieres entender y lo que finalmente entiendes. Por eso la claridad es fundamental."
+  },
+  {
+    question: "Recibes un mensaje de WhatsApp de Andrés que dice solo 'ok'. Según la metodología, ¿qué debes hacer?",
+    options: [
+      "Si tienes dudas sobre la intención, preguntar directamente en lugar de interpretar el tono o el significado por tu cuenta.",
+      "Asumir que está molesto contigo y disculparte inmediatamente para evitar conflictos.",
+      "Ignorar el mensaje porque los mensajes cortos no requieren respuesta.",
+      "Reenviar el mensaje al canal general del equipo para que alguien más lo interprete."
+    ],
+    answer: 0,
+    category: "Comunicación Efectiva",
+    recommendation: "La regla es 'Revela tu intención y NO interpretes'. Los emojis, el tono y los mensajes cortos por WhatsApp se prestan a múltiples lecturas. Ante la duda, pregunta directamente. No supongas intenciones."
+  },
+  {
+    question: "Una tarea tuya lleva más tiempo del esperado y no puedes avanzar porque falta un acceso de un cliente. ¿Cuál es la acción correcta según la metodología Scrum-Ban?",
+    options: [
+      "Mover la tarjeta a estado 'Detenido' y enviar un mensaje al equipo para destrabarla de inmediato.",
+      "Dejar la tarjeta en 'Doing' y esperar en silencio a que alguien pregunte qué pasó.",
+      "Eliminar la tarjeta y crear una nueva con fecha posterior sin avisar.",
+      "Continuar con otra tarea del Backlog sin actualizar el estado de la tarjeta bloqueada."
+    ],
+    answer: 0,
+    category: "Scrum-Ban y Tarjetas",
+    recommendation: "Cuando una tarea no puede avanzar, debes moverla a 'Detenido' y activar la comunicación para destrabarla. Dejar una tarjeta en 'Doing' sin poder avanzar engaña al equipo sobre el estado real del trabajo."
+  },
+  {
+    question: "¿Cuál de las siguientes actitudes es lo que SÍ se espera de un colaborador en AvanzaSmart?",
+    options: [
+      "Plantear inquietudes y resolver los problemas en equipo manteniendo la transparencia.",
+      "Tomar decisiones por cuenta propia cuando no estás de acuerdo con la tarea asignada.",
+      "Ocultarle un problema al equipo mientras intentas resolverlo solo para no molestar.",
+      "Usar la flexibilidad de tiempo aunque las tareas se retrasen."
+    ],
+    answer: 0,
+    category: "Cultura de Equipo",
+    recommendation: "Se espera transparencia y trabajo en equipo. Ocultar problemas o tomar decisiones unilaterales va en contra de la cultura de la agencia. Las dificultades se resuelven comunicándolas, no escondiéndolas."
+  },
+  {
+    question: "Según el pilar de CALIDAD, ¿cuál es la responsabilidad del colaborador antes de entregar una tarea?",
+    options: [
+      "Leer lo que entregas y usar IA para revisar; no entregar asumiendo que otro compañero lo arreglará.",
+      "Entregar lo más rápido posible sin revisar, ya que la velocidad es lo más importante.",
+      "Esperar a que el product owner revise antes de marcar la tarea como entregada.",
+      "Entregar solo cuando el cliente dé su aprobación explícita en el chat."
+    ],
+    answer: 0,
+    category: "Compromiso y Calidad",
+    recommendation: "La calidad es responsabilidad propia: leer lo que entregas, apoyarte en IA para revisar errores y no asumir que otro lo corregirá. Cada entrega debe tener nivel de 'entrega final', no de borrador."
+  },
+  {
+    question: "¿Qué significa el pilar de PROACTIVIDAD en la metodología de trabajo de la agencia?",
+    options: [
+      "Empujar la tarjeta: pedir lo que te falta, actualizarla constantemente y comentar el avance.",
+      "Esperar instrucciones detalladas antes de comenzar cualquier tarea para evitar errores.",
+      "Proponer nuevas ideas de trabajo sin consultar con el equipo para demostrar iniciativa.",
+      "Terminar primero las tareas del Backlog antes de las asignadas en el sprint activo."
+    ],
+    answer: 0,
+    category: "Compromiso y Calidad",
+    recommendation: "Ser proactivo significa comprometerte con la tarjeta: empújala, pide lo que te falta, actualiza su estado y deja comentarios. No esperes a que el trabajo llegue solo; muévelo tú."
+  },
+  {
+    question: "Al finalizar una tarea y moverla al estado 'Done', ¿qué es indispensable incluir según el checklist de entrega?",
+    options: [
+      "Dejar el link de visualización o una captura de pantalla en los comentarios de la tarjeta.",
+      "Enviar un mensaje de voz por WhatsApp personal al supervisor avisando que terminaste.",
+      "Mover la tarjeta sin comentarios para no saturar el registro de actividad del sprint.",
+      "Esperar a que el coordinador revise y sea él quien marque la tarea como Done."
+    ],
+    answer: 0,
+    category: "Scrum-Ban y Tarjetas",
+    recommendation: "El checklist de entrega exige: actualizar la tarjeta, completar el checklist, comentar con la entrega y dejar el link o captura visible. Quien revisa no debe buscar el trabajo; debe encontrarlo en la tarjeta."
+  },
+  {
+    question: "¿Qué representa el pilar de COOPERACIÓN en la metodología de trabajo?",
+    options: [
+      "Dejar los accesos visibles, abrir los permisos y facilitar el trabajo de los demás compañeros.",
+      "Ayudar a un compañero solo cuando no tienes tareas propias pendientes en el sprint.",
+      "Compartir tus contraseñas personales con todo el equipo para agilizar los accesos.",
+      "Resolver los problemas de otros antes que los propios para demostrar disposición."
+    ],
+    answer: 0,
+    category: "Cultura de Equipo",
+    recommendation: "Cooperación significa facilitar la vida del equipo: deja accesos visibles, abre permisos a tiempo y no esperes a que alguien te pida lo que ya sabes que necesita. El trabajo de todos fluye mejor cuando cada uno cuida su parte."
+  },
+  {
+    question: "Según el enfoque esperado por la agencia, ¿en qué debe centrarse un colaborador al ejecutar sus tareas?",
+    options: [
+      "En los resultados: terminar lo que se le pide en el tiempo asignado con la calidad esperada.",
+      "En el esfuerzo y las horas invertidas, ya que demuestran compromiso aunque no se termine.",
+      "En el aspecto estético y la perfección, aunque esto signifique entregar fuera de plazo.",
+      "En el pensamiento mágico: confiar en que si la intención es buena, el resultado será positivo."
+    ],
+    answer: 0,
+    category: "Cultura de Equipo",
+    recommendation: "La agencia premia resultados, no esfuerzo. Enfocarse en el esfuerzo, lo estético o la perfección en lugar de lo importante es una de las actitudes que expresamente NO se esperan de los colaboradores."
+  }
+];
+
 // Helper to get questions for any test
 export const getQuestionsForTest = (testId: TestId): Question[] => {
   switch (testId) {
@@ -447,6 +585,8 @@ export const getQuestionsForTest = (testId: TestId): Question[] => {
       return questionsCoreValues;
     case 'sales':
       return questionsSales;
+    case 'work_methodology':
+      return questionsWorkMethodology;
     default:
       return questionsClickUp;
   }
@@ -481,5 +621,11 @@ export const categoryRecommendations: Record<string, string> = {
   "Objeciones y Cierre": "Sigue la fórmula: concordar (empatizar), manejar con un conector y cerrar inmediatamente por alternativa.",
   "Rapport": "No pidas datos personales de forma prematura; hazlo en el momento de la confirmación explicando su utilidad.",
   "Persuasión": "Integra principios de persuasión como prueba social, urgencia legítima y escasez para acelerar la toma de decisiones.",
-  "Uso del Guión": "Apóyate en guiones probados para mantener consistencia y evitar la improvisación que diluye las ventas."
+  "Uso del Guión": "Apóyate en guiones probados para mantener consistencia y evitar la improvisación que diluye las ventas.",
+
+  // Metodología de Trabajo
+  "Comunicación Efectiva": "Aplica siempre Saludo + Mensaje en un solo texto, revela tu intención y no interpretes, mantén informado al equipo y sobrecomunica pero sintetiza.",
+  "Scrum-Ban y Tarjetas": "Actualiza tu tarjeta en tiempo real (Doing → Detenido → Done), empuja la tarea ante cualquier bloqueo y siempre deja el link de entrega en los comentarios.",
+  "Cultura de Equipo": "La agencia espera transparencia, trabajo colaborativo y enfoque en resultados. Ocultar problemas, tomar decisiones solas o centrarse en el esfuerzo en lugar del resultado va en contra de la cultura.",
+  "Compromiso y Calidad": "Lee lo que entregas, usa IA para revisar y empuja proactivamente tus tarjetas. La calidad y la proactividad son responsabilidad tuya, no del revisor."
 };

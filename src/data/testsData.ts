@@ -188,9 +188,9 @@ export const questionsClickUp: Question[] = [
     question: "¿Qué advertencia específica se hace sobre trabajar y detener tarjetas fuera del horario laboral habitual?",
     options: [
       "Si trabajas de noche y se te detiene una tarjeta, el equipo no estará disponible para apoyarte y la tarea quedará bloqueada.",
-      "ClickUp bloquea automáticamente el acceso después de las 7:00 PM por motivos de seguridad.",
-      "Las tarjetas trabajadas tarde pierden automáticamente el registro de comentarios del sprint.",
-      "No existe ningún riesgo, la metodología promueve resolver bloqueos en soledad a cualquier hora."
+      "No hay ningún problema: puedes trabajar de noche porque tienes autonomía para resolver bloqueos por tu cuenta.",
+      "Trabajar de noche es más eficiente porque nadie interrumpe y avanzas mejor en silencio.",
+      "La metodología sugiere avisar solo si el bloqueo supera las 24 horas sin resolverse."
     ],
     answer: 0,
     category: "Cultura Operativa",
@@ -299,28 +299,28 @@ export const questionsCoreValues: Question[] = [
     recommendation: "El crecimiento constante no es pasivo: implica curiosidad, actitud autodidacta, ganas de capacitarse y generosidad para compartir los descubrimientos con el resto de la agencia."
   },
   {
-    question: "¿Cuál es la regla de oro en las reuniones de equipo para mantener la agilidad y el respeto por el tiempo?",
+    question: "Un cliente reporta que sus resultados no son los esperados. ¿Cuál es la reacción que refleja los valores de la agencia?",
     options: [
-      "Reuniones breves y aportes acotados de máximo un minuto para evitar dispersión y enfocarse en lo relevante.",
-      "Reuniones de más de tres horas para debatir detalladamente cada pensamiento de cada participante.",
-      "No tener reuniones nunca y resolver todo a través de discusiones desordenadas por chat.",
-      "Reunirse únicamente cuando un cliente cancela un contrato o amenaza con irse."
-    ],
-    answer: 0,
-    category: "Agilidad Operativa",
-    recommendation: "Para que las reuniones de alineación sean sostenibles, deben ser breves, estructuradas y con intervenciones acotadas (máximo un minuto por aporte). Eso preserva el tiempo de ejecución productiva."
-  },
-  {
-    question: "Si un cliente reporta que sus resultados no son buenos, ¿cuál es la reacción que refleja los valores de la agencia?",
-    options: [
-      "Activar inmediatamente la capacidad de reacción del equipo, revisar los datos y proponer ajustes ágiles sin esconderse.",
-      "Ignorar los mensajes del cliente y esperar a que termine el periodo contractual.",
-      "Culpar al cliente diciéndole que su producto no tiene mercado ni demanda suficiente.",
-      "Borrar las campañas de inmediato y entrar en pánico sin hacer análisis previo."
+      "Activar la capacidad de reacción del equipo, revisar los datos y proponer ajustes ágiles sin esconderse del cliente.",
+      "Esperar a que el cliente se calme solo antes de responderle para no generar más tensión.",
+      "Culpar a los algoritmos de las plataformas y explicarle que no depende de la agencia.",
+      "Reconocer el problema pero posponer los ajustes hasta el siguiente sprint semanal."
     ],
     answer: 0,
     category: "Enfoque en Problema vs Solución",
     recommendation: "Nuestro mayor valor ante el cliente es la capacidad de reacción. Cuando algo no anda bien, se da la cara con proactividad, se analizan los datos y se iteran los anuncios o procesos de inmediato."
+  },
+  {
+    question: "¿Qué distingue a un colaborador con mentalidad de 'Crecimiento Constante' dentro de la agencia?",
+    options: [
+      "Aprende de forma autodidacta, aplica lo aprendido en su trabajo y comparte los hallazgos con el equipo.",
+      "Solo se capacita cuando la agencia lo obliga formalmente con un curso o certificación obligatoria.",
+      "Acumula conocimientos sin compartirlos para mantener una ventaja sobre sus compañeros.",
+      "Espera a que su líder le indique exactamente qué aprender y cuándo hacerlo."
+    ],
+    answer: 0,
+    category: "Crecimiento y Aprendizaje",
+    recommendation: "El crecimiento constante no es pasivo: implica curiosidad, actitud autodidacta, ganas de capacitarse y generosidad para compartir los descubrimientos con el resto de la agencia."
   }
 ];
 

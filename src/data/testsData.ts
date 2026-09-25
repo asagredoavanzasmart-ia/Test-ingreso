@@ -24,7 +24,7 @@ export interface TestMetadata {
 export const testsMetadata: Record<TestId, TestMetadata> = {
   clickup: {
     id: 'clickup',
-    title: 'Test Diagnóstico Metodología de Trabajo en ClickUp',
+    title: 'Test Metodología de Trabajo en ClickUp',
     shortTitle: 'Metodología ClickUp',
     badge: 'Cultura Operativa & Gestión',
     tagline: 'Inbox diario, Modo Yo, regla del 50%, "Empuja la tarea" y entregables',
@@ -36,7 +36,7 @@ export const testsMetadata: Record<TestId, TestMetadata> = {
   },
   core_values: {
     id: 'core_values',
-    title: 'Test Diagnóstico Valores Medulares de la Agencia',
+    title: 'Test Valores Medulares de la Agencia',
     shortTitle: 'Valores Medulares',
     badge: 'Cultura, Agilidad & IA',
     tagline: 'Iteración acelerada, agilidad, uso crítico de IA y enfoque en la solución',
@@ -48,7 +48,7 @@ export const testsMetadata: Record<TestId, TestMetadata> = {
   },
   sales: {
     id: 'sales',
-    title: 'Test Diagnóstico Ventas por WhatsApp',
+    title: 'Test Ventas por WhatsApp',
     shortTitle: 'Ventas por WhatsApp',
     badge: 'Comercial & Conversión',
     tagline: 'Psicología de ventas, cierres, objeciones y persuasión táctica',
@@ -60,7 +60,7 @@ export const testsMetadata: Record<TestId, TestMetadata> = {
   },
   work_methodology: {
     id: 'work_methodology',
-    title: 'Test Diagnóstico Metodología de Trabajo',
+    title: 'Test Metodología de Trabajo',
     shortTitle: 'Forma de Trabajo',
     badge: 'Cultura & Equipo',
     tagline: 'Comunicación efectiva, Scrum-Ban, compromiso y comportamiento en equipo',

@@ -356,7 +356,7 @@ export default function App() {
 
       ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
       ctx.font = 'bold 16px "Arimo", sans-serif';
-      ctx.fillText('DIAGNÓSTICO ESTRATÉGICO Y OPERATIVO', 60, 115);
+      ctx.fillText('TESTS CONTENIDO ONBOARDING', 60, 115);
 
       // Test Title in Header
       ctx.fillStyle = '#ffffff';
@@ -549,11 +549,11 @@ export default function App() {
             {/* Header del Hub */}
             <div className="text-center max-w-2xl mx-auto mb-8 md:mb-12">
               <div className="inline-block bg-[var(--gradient-primary)] text-white text-[10px] font-bold tracking-[0.1em] uppercase px-3.5 py-1.5 rounded-full mb-4 shadow-[var(--shadow-btn)]">
-                Plataforma de Diagnóstico
+                Onboarding AvanzaSmart
               </div>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-['Ubuntu'] font-bold text-[var(--gray)] dark:text-[var(--text)] tracking-tight mb-3">
-                Diagnóstico y <span className="gradient-text">Simulación</span>
+                Tests Contenido <span className="gradient-text">Onboarding</span>
               </h1>
 
               <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed font-['Arimo']">
@@ -928,7 +928,7 @@ export default function App() {
                     : 'avanza-btn-primary'
                 }`}
               >
-                <span>{currentQ < activeQuestions.length - 1 ? 'Siguiente Pregunta' : 'Finalizar y Ver Diagnóstico'}</span>
+                <span>{currentQ < activeQuestions.length - 1 ? 'Siguiente Pregunta' : 'Finalizar y Ver Resultado'}</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
@@ -961,7 +961,7 @@ export default function App() {
             <div className="relative rounded-[var(--radius-lg)] p-6 sm:p-8 text-center mb-8 overflow-hidden text-white shadow-[var(--shadow-lg)]" style={{ background: 'var(--gradient-sunset)' }}>
               <div className="relative z-10 max-w-xl mx-auto">
                 <div className="inline-block px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-bold uppercase tracking-widest text-white mb-3 border border-white/30">
-                  Diagnóstico Guardado en Memoria
+                  Resultado Guardado en Memoria
                 </div>
 
                 <h2 className="text-2xl sm:text-3xl font-['Ubuntu'] font-bold mb-4">
@@ -1020,7 +1020,7 @@ export default function App() {
                   </h3>
                 </div>
                 <span className="text-[10px] font-bold uppercase tracking-wider gradient-text font-['Ubuntu']">
-                  Diagnóstico Cualitativo
+                  Resultado por Área
                 </span>
               </div>
 
@@ -1315,7 +1315,7 @@ export default function App() {
       {/* Footer AvanzaSmart (Sin la frase 'guia de estilo light and dark') */}
       <footer className="text-center py-6">
         <p className="text-xs text-[var(--text-muted)] font-['Arimo']">
-          <span className="font-['Ubuntu'] font-bold text-[var(--gray)] dark:text-[var(--text)]">Avanza<span className="gradient-text">Smart</span></span> · Diagnóstico Estratégico y Simulación
+          <span className="font-['Ubuntu'] font-bold text-[var(--gray)] dark:text-[var(--text)]">Avanza<span className="gradient-text">Smart</span></span> · Tests Contenido Onboarding
         </p>
       </footer>
 

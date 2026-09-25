@@ -1,0 +1,208 @@
+@import "tailwindcss";
+
+@theme {
+  --font-ubuntu: "Ubuntu", sans-serif;
+  --font-arimo: "Arimo", sans-serif;
+}
+
+:root {
+  --bg: #FFFFFF;
+  --bg-subtle: #F5F5F5;
+  --bg-card: #FFFFFF;
+  --border: rgba(79, 79, 79, 0.10);
+  --text: #4f4f4f;
+  --text-secondary: #6b6b6b;
+  --text-muted: #999999;
+
+  --gray: #4f4f4f;
+  --red: #f34551;
+  --orange: #ff851d;
+  --pink: #ef375c;
+
+  --gradient-primary: linear-gradient(135deg, #ff851d 0%, #ef375c 100%);
+  --gradient-warm: linear-gradient(135deg, #ff851d 0%, #f34551 100%);
+  --gradient-hot: linear-gradient(135deg, #f34551 0%, #ef375c 100%);
+  --gradient-sunset: linear-gradient(160deg, #ff851d 20%, #f34551 60%, #ef375c 100%);
+  --gradient-soft: linear-gradient(135deg, rgba(255, 133, 29, 0.08) 0%, rgba(239, 55, 92, 0.08) 100%);
+  --gradient-card: linear-gradient(180deg, rgba(255, 133, 29, 0.04) 0%, rgba(239, 55, 92, 0.02) 100%);
+
+  --shadow-sm: 0 2px 6px rgba(79, 79, 79, 0.08);
+  --shadow-md: 0 4px 16px rgba(79, 79, 79, 0.12);
+  --shadow-lg: 0 8px 32px rgba(79, 79, 79, 0.14);
+  --shadow-glow: 0 4px 20px rgba(255, 133, 29, 0.20);
+  --shadow-btn: 0 4px 14px rgba(239, 55, 92, 0.25);
+  --shadow-card: 0 2px 12px rgba(79, 79, 79, 0.08), 0 0 0 1px rgba(79, 79, 79, 0.04);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1a1a1a;
+    --bg-subtle: #242424;
+    --bg-card: #242424;
+    --border: rgba(255, 255, 255, 0.08);
+    --text: #e8e8e8;
+    --text-secondary: #aaaaaa;
+    --text-muted: #707070;
+
+    --gradient-soft: linear-gradient(135deg, rgba(255, 133, 29, 0.10) 0%, rgba(239, 55, 92, 0.10) 100%);
+    --gradient-card: linear-gradient(180deg, rgba(255, 133, 29, 0.06) 0%, rgba(239, 55, 92, 0.03) 100%);
+
+    --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+    --shadow-glow: 0 4px 20px rgba(255, 133, 29, 0.30);
+    --shadow-btn: 0 4px 14px rgba(239, 55, 92, 0.35);
+    --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #1a1a1a;
+  --bg-subtle: #242424;
+  --bg-card: #242424;
+  --border: rgba(255, 255, 255, 0.08);
+  --text: #e8e8e8;
+  --text-secondary: #aaaaaa;
+  --text-muted: #707070;
+
+  --gradient-soft: linear-gradient(135deg, rgba(255, 133, 29, 0.10) 0%, rgba(239, 55, 92, 0.10) 100%);
+  --gradient-card: linear-gradient(180deg, rgba(255, 133, 29, 0.06) 0%, rgba(239, 55, 92, 0.03) 100%);
+
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 4px 20px rgba(255, 133, 29, 0.30);
+  --shadow-btn: 0 4px 14px rgba(239, 55, 92, 0.35);
+  --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+:root[data-theme="light"] {
+  --bg: #FFFFFF;
+  --bg-subtle: #F5F5F5;
+  --bg-card: #FFFFFF;
+  --border: rgba(79, 79, 79, 0.10);
+  --text: #4f4f4f;
+  --text-secondary: #6b6b6b;
+  --text-muted: #999999;
+
+  --gradient-soft: linear-gradient(135deg, rgba(255, 133, 29, 0.08) 0%, rgba(239, 55, 92, 0.08) 100%);
+  --gradient-card: linear-gradient(180deg, rgba(255, 133, 29, 0.04) 0%, rgba(239, 55, 92, 0.02) 100%);
+
+  --shadow-sm: 0 2px 6px rgba(79, 79, 79, 0.08);
+  --shadow-md: 0 4px 16px rgba(79, 79, 79, 0.12);
+  --shadow-lg: 0 8px 32px rgba(79, 79, 79, 0.14);
+  --shadow-glow: 0 4px 20px rgba(255, 133, 29, 0.20);
+  --shadow-btn: 0 4px 14px rgba(239, 55, 92, 0.25);
+  --shadow-card: 0 2px 12px rgba(79, 79, 79, 0.08), 0 0 0 1px rgba(79, 79, 79, 0.04);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arimo', sans-serif;
+  background-color: var(--bg-subtle);
+  color: var(--text);
+  margin: 0;
+  line-height: 1.6;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+/* AvanzaSmart Gradient Text */
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-warm {
+  background: var(--gradient-warm);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-sunset {
+  background: var(--gradient-sunset);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* AvanzaSmart Component utilities */
+.avanza-btn-primary {
+  background: var(--gradient-primary);
+  color: #fff;
+  box-shadow: var(--shadow-btn);
+  border-radius: var(--radius-full);
+  font-family: 'Arimo', sans-serif;
+  font-weight: 700;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.avanza-btn-primary:hover {
+  filter: brightness(1.05);
+}
+.avanza-btn-primary:active {
+  transform: scale(0.98);
+}
+
+.avanza-btn-warm {
+  background: var(--gradient-warm);
+  color: #fff;
+  box-shadow: var(--shadow-glow);
+  border-radius: var(--radius-full);
+  font-family: 'Arimo', sans-serif;
+  font-weight: 700;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.avanza-btn-warm:hover {
+  filter: brightness(1.05);
+}
+
+.avanza-btn-sunset {
+  background: var(--gradient-sunset);
+  color: #fff;
+  box-shadow: var(--shadow-btn);
+  border-radius: var(--radius-full);
+  font-family: 'Arimo', sans-serif;
+  font-weight: 700;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.avanza-btn-outline {
+  background: transparent;
+  color: var(--red);
+  border: 2px solid var(--red);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-full);
+  font-family: 'Arimo', sans-serif;
+  font-weight: 700;
+}
+
+.avanza-btn-ghost {
+  background: var(--bg-subtle);
+  color: var(--text);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-full);
+  font-family: 'Arimo', sans-serif;
+  font-weight: 600;
+}
+
+.avanza-tag-soft {
+  background: var(--gradient-soft);
+  color: var(--red);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-full);
+}

@@ -326,149 +326,179 @@ export default function App() {
       const ctx = canvas.getContext('2d');
       if (!ctx) return;
 
-      const width = 1080;
-      const height = 1350;
-      canvas.width = width;
-      canvas.height = height;
-
+      const W = 1080;
+      const PAD = 60;
       const isDark = theme === 'dark';
       const bgColor = isDark ? '#1a1a1a' : '#ffffff';
-      const cardBg = isDark ? '#242424' : '#f8f8f8';
+      const cardBg = isDark ? '#2c2c2c' : '#f5f5f5';
       const textColor = isDark ? '#e8e8e8' : '#333333';
       const textMuted = isDark ? '#aaaaaa' : '#6b6b6b';
 
+      // Wrap text helper — only needs ctx.font + measureText, safe before canvas is sized
+      const wrapText = (text: string, font: string, maxWidth: number): string[] => {
+        ctx.font = font;
+        const words = text.split(' ');
+        const lines: string[] = [];
+        let line = '';
+        for (const word of words) {
+          const test = line ? `${line} ${word}` : word;
+          if (ctx.measureText(test).width > maxWidth && line) {
+            lines.push(line);
+            line = word;
+          } else {
+            line = test;
+          }
+        }
+        if (line) lines.push(line);
+        return lines;
+      };
+
+      // Pre-compute recommendation wrapped lines to know canvas height
+      const REC_FONT = '17px "Arimo", sans-serif';
+      const REC_MAX_W = W - PAD * 2 - 50;
+      const recRaw = areasToImprove.length > 0
+        ? (categoryRecommendations[areasToImprove[0].category] || 'Repasar los fundamentos de la metodología.')
+        : '';
+      const recLines = recRaw ? wrapText(recRaw, REC_FONT, REC_MAX_W) : [];
+      const REC_LINE_H = 26;
+      const recBoxH = recRaw ? 55 + recLines.length * REC_LINE_H + 25 : 0;
+
+      // Layout constants
+      const HEADER_H = 240;
+      const STATS_Y = HEADER_H + 30;
+      const STATS_H = 230;
+      const SUBTITLE_Y = STATS_Y + STATS_H + 60;
+      const CATS_Y = SUBTITLE_Y + 50;
+      const CAT_H = 85;
+      const catsEndY = CATS_Y + breakdownData.length * CAT_H;
+      const REC_Y = catsEndY + 30;
+      const H = REC_Y + recBoxH + 80;
+
+      canvas.width = W;
+      canvas.height = H;
+
       // Background
       ctx.fillStyle = bgColor;
-      ctx.fillRect(0, 0, width, height);
+      ctx.fillRect(0, 0, W, H);
 
-      // Header Gradient
-      const grad = ctx.createLinearGradient(0, 0, width, 240);
+      // Header gradient
+      const grad = ctx.createLinearGradient(0, 0, W, HEADER_H);
       grad.addColorStop(0, '#ff851d');
       grad.addColorStop(0.5, '#f34551');
       grad.addColorStop(1, '#ef375c');
       ctx.fillStyle = grad;
-      ctx.fillRect(0, 0, width, 230);
+      ctx.fillRect(0, 0, W, HEADER_H);
 
-      // Brand Logo
+      // Brand
       ctx.fillStyle = '#ffffff';
       ctx.font = 'bold 36px "Ubuntu", sans-serif';
-      ctx.fillText('AvanzaSmart', 60, 80);
+      ctx.fillText('AvanzaSmart', PAD, 75);
+      ctx.fillStyle = 'rgba(255,255,255,0.85)';
+      ctx.font = 'bold 15px "Arimo", sans-serif';
+      ctx.fillText('TESTS CONTENIDO ONBOARDING', PAD, 108);
 
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
-      ctx.font = 'bold 16px "Arimo", sans-serif';
-      ctx.fillText('TESTS CONTENIDO ONBOARDING', 60, 115);
-
-      // Test Title in Header
+      // Test title (wrapped so long names don't overflow)
       ctx.fillStyle = '#ffffff';
-      ctx.font = 'bold 32px "Ubuntu", sans-serif';
-      ctx.fillText(currentTestMeta.title, 60, 180);
+      const titleLines = wrapText(currentTestMeta.title, 'bold 30px "Ubuntu", sans-serif', W - PAD * 2 - 40);
+      titleLines.forEach((line, i) => ctx.fillText(line, PAD, 165 + i * 40));
 
-      // Card with main result
+      // Stats card
       ctx.fillStyle = cardBg;
       ctx.beginPath();
-      drawCardRect(ctx, 60, 270, width - 120, 240, 24);
+      drawCardRect(ctx, PAD, STATS_Y, W - PAD * 2, STATS_H, 24);
       ctx.fill();
 
-      // Score Stat Box - Correctas
+      const statNumY = STATS_Y + 110;
+      const statLblY = STATS_Y + 152;
+
       ctx.fillStyle = '#10b981';
       ctx.font = 'bold 64px "Ubuntu", sans-serif';
-      ctx.fillText(`${score}`, 100, 370);
-      ctx.font = 'bold 18px "Arimo", sans-serif';
-      ctx.fillText('RESPUESTAS CORRECTAS', 100, 410);
+      ctx.fillText(`${score}`, PAD + 40, statNumY);
+      ctx.font = 'bold 16px "Arimo", sans-serif';
+      ctx.fillText('RESPUESTAS CORRECTAS', PAD + 40, statLblY);
 
-      // Score Stat Box - Incorrectas
       ctx.fillStyle = score === activeQuestions.length ? '#10b981' : '#f34551';
       ctx.font = 'bold 64px "Ubuntu", sans-serif';
-      ctx.fillText(`${activeQuestions.length - score}`, 450, 370);
-      ctx.font = 'bold 18px "Arimo", sans-serif';
-      ctx.fillText('RESPUESTAS INCORRECTAS', 450, 410);
+      ctx.fillText(`${activeQuestions.length - score}`, 450, statNumY);
+      ctx.font = 'bold 16px "Arimo", sans-serif';
+      ctx.fillText('RESPUESTAS INCORRECTAS', 450, statLblY);
 
-      // Score Stat Box - Porcentaje General
       ctx.fillStyle = '#ff851d';
       ctx.font = 'bold 64px "Ubuntu", sans-serif';
-      ctx.fillText(`${totalPercentage}%`, 780, 370);
-      ctx.font = 'bold 18px "Arimo", sans-serif';
-      ctx.fillText('LOGRO GENERAL', 780, 410);
+      ctx.fillText(`${totalPercentage}%`, 790, statNumY);
+      ctx.font = 'bold 16px "Arimo", sans-serif';
+      ctx.fillText('LOGRO GENERAL', 790, statLblY);
 
-      // Subtitle for Breakdown
+      // Subtitle
       ctx.fillStyle = textColor;
       ctx.font = 'bold 26px "Ubuntu", sans-serif';
-      ctx.fillText('Desglose de Áreas Evaluadas', 60, 560);
+      ctx.fillText('Desglose de Áreas Evaluadas', PAD, SUBTITLE_Y);
 
-      // List evaluated categories
-      let y = 610;
-      breakdownData.slice(0, 7).forEach((item) => {
+      // All categories (no slice limit)
+      let y = CATS_Y;
+      breakdownData.forEach((item) => {
         ctx.fillStyle = cardBg;
         ctx.beginPath();
-        drawCardRect(ctx, 60, y, width - 120, 70, 14);
+        drawCardRect(ctx, PAD, y, W - PAD * 2, 70, 14);
         ctx.fill();
 
-        // Status badge
         if (item.isCorrect) {
-          ctx.fillStyle = 'rgba(16, 185, 129, 0.15)';
+          ctx.fillStyle = 'rgba(16,185,129,0.15)';
           ctx.beginPath();
-          drawCardRect(ctx, 80, y + 15, 130, 40, 20);
+          drawCardRect(ctx, PAD + 20, y + 15, 130, 40, 20);
           ctx.fill();
-
           ctx.fillStyle = '#059669';
           ctx.font = 'bold 14px "Ubuntu", sans-serif';
-          ctx.fillText('✓ CORRECTA', 98, y + 40);
+          ctx.fillText('✓ CORRECTA', PAD + 38, y + 40);
         } else {
-          ctx.fillStyle = 'rgba(243, 69, 81, 0.15)';
+          ctx.fillStyle = 'rgba(243,69,81,0.15)';
           ctx.beginPath();
-          drawCardRect(ctx, 80, y + 15, 140, 40, 20);
+          drawCardRect(ctx, PAD + 20, y + 15, 140, 40, 20);
           ctx.fill();
-
           ctx.fillStyle = '#dc2626';
           ctx.font = 'bold 14px "Ubuntu", sans-serif';
-          ctx.fillText('✗ INCORRECTA', 96, y + 40);
+          ctx.fillText('✗ INCORRECTA', PAD + 36, y + 40);
         }
 
-        // Category name
         ctx.fillStyle = textColor;
         ctx.font = 'bold 20px "Arimo", sans-serif';
         ctx.fillText(item.category, 240, y + 42);
 
-        // Counter
         ctx.fillStyle = textMuted;
         ctx.font = '16px "Arimo", sans-serif';
-        ctx.fillText(`${item.correct} de ${item.total} aciertos`, width - 260, y + 42);
+        ctx.fillText(`${item.correct} de ${item.total} aciertos`, W - 260, y + 42);
 
-        y += 85;
+        y += CAT_H;
       });
 
-      // Key recommendation box
-      if (areasToImprove.length > 0) {
+      // Recommendation box — full text, wrapped
+      if (recRaw) {
         ctx.fillStyle = isDark ? '#2e2518' : '#fff7ed';
         ctx.beginPath();
-        drawCardRect(ctx, 60, y + 20, width - 120, 110, 16);
+        drawCardRect(ctx, PAD, REC_Y, W - PAD * 2, recBoxH, 16);
         ctx.fill();
-
         ctx.strokeStyle = '#fed7aa';
         ctx.lineWidth = 2;
         ctx.stroke();
 
         ctx.fillStyle = '#c2410c';
         ctx.font = 'bold 15px "Ubuntu", sans-serif';
-        ctx.fillText('ÁREA PRINCIPAL A REFORZAR:', 85, y + 55);
+        ctx.fillText('ÁREA PRINCIPAL A REFORZAR:', PAD + 25, REC_Y + 38);
 
-        const recText = categoryRecommendations[areasToImprove[0].category] || 'Repasar los fundamentos de la metodología.';
         ctx.fillStyle = textColor;
-        ctx.font = '15px "Arimo", sans-serif';
-        ctx.fillText(recText.slice(0, 100) + '...', 85, y + 90);
+        ctx.font = REC_FONT;
+        recLines.forEach((line, i) => {
+          ctx.fillText(line, PAD + 25, REC_Y + 66 + i * REC_LINE_H);
+        });
       }
 
       // Footer
-      const now = new Date().toLocaleDateString('es-CL', {
-        day: '2-digit',
-        month: 'long',
-        year: 'numeric'
-      });
+      const now = new Date().toLocaleDateString('es-CL', { day: '2-digit', month: 'long', year: 'numeric' });
       ctx.fillStyle = textMuted;
       ctx.font = '14px "Arimo", sans-serif';
-      ctx.fillText(`Evaluación registrada el ${now} • AvanzaSmart Standard`, 60, height - 50);
+      ctx.fillText(`Evaluación registrada el ${now} • AvanzaSmart Standard`, PAD, H - 28);
 
-      // Download trigger
+      // Download
       const link = document.createElement('a');
       link.download = `Resultado-${currentTestMeta.shortTitle.replace(/\s+/g, '_')}-${Date.now()}.png`;
       link.href = canvas.toDataURL('image/png');
